@@ -1992,6 +1992,15 @@ WEBVIEW_API int webview_init(struct webview *w) {
   item = create_menu_item(title, "terminate:", "q");
   objc_msgSend(appMenu, sel_registerName("addItem:"), item);
 
+  item = create_menu_item(get_nsstring("Copy"), "copy:", "c");
+  objc_msgSend(appMenu, sel_registerName("addItem:"), item);
+
+  item = create_menu_item(get_nsstring("Paste"), "paste:", "v");
+  objc_msgSend(appMenu, sel_registerName("addItem:"), item);
+
+  item = create_menu_item(get_nsstring("Select All"), "selectAll:", "a");
+  objc_msgSend(appMenu, sel_registerName("addItem:"), item);
+
   objc_msgSend(objc_msgSend((id)objc_getClass("NSApplication"),
                             sel_registerName("sharedApplication")),
                sel_registerName("setMainMenu:"), menubar);
